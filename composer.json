@@ -1,0 +1,25 @@
+{
+    "name": "fedornabilkin/yii2-exchange",
+    "description": "The exchange of credits on the basis of Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","exchange","credit"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fedornabilkin",
+            "email": "fedornabilkin@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "dektrium/yii2-user": "^0.9.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "fedornabilkin\\exchange\\": ""
+        }
+    },
+    "extra": {
+        "bootstrap": "fedornabilkin\\exchange\\Bootstrap"
+    }
+}
