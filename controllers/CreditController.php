@@ -3,17 +3,18 @@
 namespace fedornabilkin\exchange\controllers;
 
 use fedornabilkin\exchange\Finder;
+use fedornabilkin\exchange\Module;
 use Yii;
 use fedornabilkin\exchange\models\Exchange;
 use yii\data\ActiveDataProvider;
-use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * CreditController implements the CRUD actions for Exchange model.
+ *
+ * @property Module $module
  */
 class CreditController extends Controller
 {
@@ -30,10 +31,6 @@ class CreditController extends Controller
     public function __construct($id, $module, Finder $finder, $config = [])
     {
         $this->finder = $finder;
-//        $user = Yii::createObject([
-//           'class' => $module->modelMap['User'],
-//        ]);
-//        var_dump($user);exit;
         parent::__construct($id, $module, $config);
     }
     /**
@@ -107,7 +104,9 @@ class CreditController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Exchange();
+        $model = Yii::createObject(['class' => $this->module->modelMap['Exchange']]);
+
+        $model->user_id = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['my']);
@@ -147,4 +146,14 @@ class CreditController extends Controller
 
         throw new NotFoundHttpException(Yii::t('exchange', 'The requested page does not exist.'));
     }
+
+    protected function beforeInsert($model){
+        \Yii::$app->session->setFlash('success', 'before event');
+//        var_dump($model);exit;
+    }
+    protected function afterInsert($model){}
+    protected function beforeUpdate($model){}
+    protected function afterUpdate($model){}
+    protected function beforeDelete($model){}
+    protected function afterDelete($model){}
 }

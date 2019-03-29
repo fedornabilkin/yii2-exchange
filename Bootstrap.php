@@ -15,7 +15,7 @@ use yii\web\GroupUrlRule;
 class Bootstrap implements BootstrapInterface
 {
     /** @var array Model's map */
-    private $_modelMap = [
+    private $modelMap = [
         'Exchange' => Exchange::class,
         'User' => User::class,
     ];
@@ -35,8 +35,8 @@ class Bootstrap implements BootstrapInterface
                 $module->moduleName = Module::MODULE_NAME;
             }
 
-            $this->_modelMap = array_merge($this->_modelMap, $module->modelMap);
-            foreach ($this->_modelMap as $name => $definition) {
+            $this->modelMap = array_merge($this->modelMap, $module->modelMap);
+            foreach ($this->modelMap as $name => $definition) {
                 $class = "fedornabilkin\\exchange\\models\\" . $name;
                 Yii::$container->set($class, $definition);
                 $modelName = is_array($definition) ? $definition['class'] : $definition;

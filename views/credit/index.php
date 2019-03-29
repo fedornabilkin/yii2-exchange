@@ -1,5 +1,6 @@
 <?php
 
+use frontend\widgets\users\assets\UsersAsset;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -11,6 +12,7 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('exchange', 'All Exchange');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="exchange-index">
 

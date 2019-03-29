@@ -33,7 +33,7 @@ Usage
 -----
 
 Your project's User model must implement
-the `interfaces/ExchangeUserInterface`,
+the `interfaces/IExchangeUserInterface`,
 since the user's actions on the exchange will initiate a call
-to the `creditAction(), creditSale(), creditBuy()` methods.
+to the `exchangeCreditAction(), exchangeCreditSale(), exchangeCreditBuy()` methods.
 
